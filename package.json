@@ -1,0 +1,20 @@
+{
+  "name": "NodeTest",
+  "version": "0.0.1",
+  "description": "This is a node test project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "env": "set NODE_ENV=production & set CONFIG_FILE=./config/production.js",
+    "devEnv": "set NODE_ENV=development & set CONFIG_FILE=./config/development.js",
+    "prestart": "npm run env",
+    "poststart": "node src/PrintProcessEnvInfo.js"
+  },
+  "author": "devlzh93@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^1.27.0",
+    "express": "^4.16.2"
+  },
+  "devDependencies": {}
+}

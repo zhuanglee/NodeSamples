@@ -1,0 +1,17 @@
+{
+  "name":"production.json",
+  "env": "production",
+  "platform": "linux",
+  "upload": {
+    "path": "./public/upload/",
+    "url": "/public/upload/"
+  },
+  "redis": {
+    "host": "localhost",
+    "port": 6379
+  },
+  "mysql": {
+    "host": "localhost",
+    "port": 6666
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name":"development.json",
+  "env": "development",
+  "platform": "windows",
+  "upload": {
+    "path": "./public/upload/",
+    "url": "/public/upload/"
+  },
+  "redis": {
+    "host": "localhost",
+    "port": 6379
+  },
+  "mysql": {
+    "host": "localhost",
+    "port": 6666
+  }
+}
