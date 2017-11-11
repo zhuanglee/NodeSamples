@@ -13,8 +13,13 @@
   "author": "devlzh93@gmail.com",
   "license": "ISC",
   "dependencies": {
+    "bluebird": "^3.5.1",
     "config": "^1.27.0",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.4.2",
+    "redis": "^2.8.0",
+    "sequelize": "^4.22.5"
   },
   "devDependencies": {}
 }

@@ -1,5 +1,5 @@
 {
-  "name":"development.json",
+  "name": "development.json",
   "env": "development",
   "platform": "windows",
   "upload": {
@@ -11,7 +11,10 @@
     "port": 6379
   },
   "mysql": {
-    "host": "localhost",
-    "port": 6666
+    "host": "139.196.82.185",
+    "port": 3306,
+    "user": "root",
+    "password": "henghui@315",
+    "database": "tmp_test"
   }
 }
