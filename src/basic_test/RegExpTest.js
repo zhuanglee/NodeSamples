@@ -11,6 +11,9 @@ let execTest = function (reg, str) {
     console.log('\nreg.source =', reg.source);
     let execResult = reg.exec(str);
     console.log("reg.exec('%s') = execResult = ", str, execResult);
+    if(!execResult){
+        return;
+    }
     console.log('execResult.index =', execResult.index);
     console.log('execResult.input =', execResult.input);
     console.log('execResult.length = ', execResult.length);
@@ -21,8 +24,9 @@ let execTest = function (reg, str) {
 let test = function (reg, str) {
     console.log("%s.test('%s') = %s", reg, str, reg.test(str));
 };
-let str = 'God(good(GOOD))G0D';// 最后一个G0D中间是零
+let str = 'GodGoodG0D';// 最后一个g0d中间是零
 execTest(/^g[o|O]*d/gi, str);
-execTest(/g[o|O]*d/g, str);
+execTest(/g[o|O]*d$/gi, str);
+execTest(/g[o|O]*d/gi, str);
 test(new RegExp(/g[o|O]*D/g), str);
 test(new RegExp(/g[o|O]*D/, 'gi'), str);
