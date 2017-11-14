@@ -5,27 +5,20 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "env": "set NODE_ENV=production & set CONFIG_FILE=./config/production.js",
-    "devEnv": "set NODE_ENV=development & set CONFIG_FILE=./config/development.js",
-    "prestart": "npm run env",
-    "poststart": "node src/PrintProcessEnvInfo.js"
+    "setenv": "set NODE_ENV=production& set CONFIG_FILE=./config/production.js",
+    "prestart": "npm run setenv"
   },
   "author": "devlzh93@gmail.com",
   "license": "ISC",
   "dependencies": {
     "bluebird": "^3.5.1",
     "config": "^1.27.0",
-    "express": "^4.16.2",
     "mysql": "^2.15.0",
     "mysql2": "^1.4.2",
     "redis": "^2.8.0",
     "sequelize": "^4.22.5"
   },
   "devDependencies": {
-    "async": "^2.5.0",
-    "q": "^1.5.1",
-    "step": "^1.0.0",
-    "wind": "^0.7.3",
     "common-util": "file:lib/common-util-0.0.1.tgz",
     "mongodb-util": "file:lib/mongodb-util-0.0.1.tgz",
     "mysql-util": "file:lib/mysql-util-0.0.1.tgz",

@@ -1,10 +1,9 @@
-let moment = require('moment');
 let client = require('redis').createClient();
 client.auth('', function () {// password is empty
     console.log('auth success');
 });
 client.on('ready', function () {
-    console.log('ready:%s', moment());
+    console.log('ready:%s', new Date().toLocaleDateString());
     onReady();
 });
 

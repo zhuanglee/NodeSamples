@@ -27,6 +27,12 @@ console.log(process.mainModule);
 console.log("参数个数：%d\n参数列表：%s", process.argv.length, process.argv);
 console.log('memoryUsage = ', process.memoryUsage());
 
+// 打印package.json中的信息
+console.log("\nprocess.env.npm_package_name = %s", process.env.npm_package_name);
+console.log("process.env.npm_package_version = %s", process.env.npm_package_version);
+// 打印环境变量
+console.log("\nprocess.env.NODE_ENV = %s", process.env.NODE_ENV);
+
 console.timeEnd('runningTime');
 process.exit(5);
 console.log("程序执行结束");
