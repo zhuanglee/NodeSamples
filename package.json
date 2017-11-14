@@ -21,5 +21,16 @@
     "redis": "^2.8.0",
     "sequelize": "^4.22.5"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "async": "^2.5.0",
+    "q": "^1.5.1",
+    "step": "^1.0.0",
+    "wind": "^0.7.3",
+    "common-util": "file:lib/common-util-0.0.1.tgz",
+    "mongodb-util": "file:lib/mongodb-util-0.0.1.tgz",
+    "mysql-util": "file:lib/mysql-util-0.0.1.tgz",
+    "orm-util": "file:lib/orm-util-0.0.1.tgz",
+    "redis-util": "file:lib/redis-util-0.0.1.tgz",
+    "sql-util": "file:lib/sql-util-0.0.1.tgz"
+  }
 }

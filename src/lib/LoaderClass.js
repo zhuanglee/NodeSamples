@@ -17,7 +17,7 @@ function loadClass(className) {
     // This uses a switch for static require analysis
     switch (className) {
         case 'mysql_util':
-            Class = require('./mysql_util/index.js');
+            Class = require('../src/mysql_util/index.js');
             break;
         default:
             throw new Error('Cannot find class \'' + className + '\'');
