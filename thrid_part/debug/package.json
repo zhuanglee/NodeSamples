@@ -1,0 +1,31 @@
+{
+  "name": "debug-sample",
+  "version": "0.0.1",
+  "description": "debug sample",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "make test",
+    "setdebug": "cross-env DEBUG=*,-debug:test2",
+    "prestart": "npm run setdebug",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhuanglee/NodeTest.git"
+  },
+  "author": "zhuanglee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhuanglee/NodeTest/issues"
+  },
+  "homepage": "https://github.com/zhuanglee/NodeTest#readme",
+  "dependencies": {
+    "debug": "^3.1.0"
+  },
+  "devDependencies": {
+    "cross-env": "^5.1.1"
+  }
+}
