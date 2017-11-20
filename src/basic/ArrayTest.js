@@ -121,9 +121,9 @@ let iterationTest = function () {
 let reduceTest = function () {
     let arr = [1, 2, 3, 4, 5];
     console.log('\n原数组：', arr);
-    let sum = arr.reduce(function (pre, cur, index, array) {
-        console.log('pre=%s,cur=%s,index=%d,array=%s', pre, cur, index, array);
-        return pre + cur;
+    let sum = arr.reduce(function (preSum, cur, index, array) {
+        console.log('preSum=%s,cur=%s,index=%d,array=%s', preSum, cur, index, array);
+        return preSum + cur;
     });
     console.log('sum=%d\n', sum);
     let result = arr.reduceRight(function (pre, cur, index, array) {
