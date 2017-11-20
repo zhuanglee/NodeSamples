@@ -14,21 +14,23 @@ async function stringTest() {
 
 async function hashTest() {
 
+    let key = 'HH_TEST';
+    await redisClient.delAsync(key);
     let content = {a: 1, 'b': '2', "c": "3", d: true};
     content[520] = 1314;
     content[1314] = 520;
 
     console.log(content);
 
-    await redisClient.hmsetAsync("HH_TEST", content);
+    await redisClient.hmsetAsync(key, content);
 
     console.log('hmsetAsync-->success');
 
-    let obj = await redisClient.hgetAsync("HH_TEST", "520");
+    let obj = await redisClient.hgetAsync(key, "520");
 
     console.log('hgetAsync-->HH_TEST:520:%s', obj);
 
-    let objs = await await redisClient.hgetallAsync("HH_TEST");
+    let objs = await await redisClient.hgetallAsync(key);
     console.log('hgetallAsync-->');
     console.dir(objs);
 
@@ -36,18 +38,35 @@ async function hashTest() {
 }
 
 async function listTest() {
+    let key = 'listKey';
+    await redisClient.delAsync(key);
     for (let i = 1; i <= 10; i++) {
-        await redisClient.lpushAsync('listKey', 'listValue'+i);
+        await redisClient.lpushAsync(key, 'listValue' + i);
     }
     return true;
 }
 
 async function setTest() {
+    let key = 'setKey';
+    await redisClient.delAsync(key);
+    let arr = [];
     for (let i = 1; i <= 10; i++) {
-        await redisClient.saddAsync('setKey', 'setValue'+i);
+        arr.push('setValue' + i);
     }
-    let setValues = await redisClient.smembersAsync('setKey');
-    console.log(setValues);
+    for (let i = 1; i <= 10; i++) {
+        arr.push('setElement' + i);
+    }
+    await redisClient.saddAsync(key, arr);
+    let setValues = await redisClient.smembersAsync(key);
+    console.log('setValues=',setValues);
+    let matchResult = await redisClient.sscanAsync(key, 0, 'match', '*setElement*');
+    console.log('matchResult=',matchResult);
+    matchResult.forEach(function (e) {
+        console.log(e)
+    });
+    // for(let e of matchResult){
+    //     console.log(e)
+    // }
     return true;
 }
 
