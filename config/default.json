@@ -1,4 +1,8 @@
 {
   "name":"default.json",
-  "debug": true
+  "debug": true,
+  "http":{
+    "host": "localhost",
+    "port": 3000
+  }
 }

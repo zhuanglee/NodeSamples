@@ -11,6 +11,8 @@ function start(host, port, route) {
         let handler = route(request);
         if (typeof handler === 'function') {
             handler(request, response);
+        }else{
+            throw new Error('handler is not function');
         }
     }
     http.createServer(onRequest).listen(port, host);

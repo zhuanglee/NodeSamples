@@ -20,7 +20,7 @@ function route(req) {
     } else if('login' === pathname){
         return login;
     } else {
-        return showPage;
+        return show404Page;
     }
 }
 
