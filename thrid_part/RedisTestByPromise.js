@@ -5,41 +5,39 @@ const redis = require('bluebird')
 
 async function stringTest() {
     for (let i = 1; i <= 3; i++) {
-        await redis.setAsync('stringkey' + i, 'value' + i);
-        console.log(await redis.getAsync('stringkey' + i));
+        let key = 'TEST_STRING_' + i;
+        let val = 'value' + i;
+        console.log('set %s %s =', key, val, await redis.setAsync(key, val));
+        console.log('get %s =', key, await redis.getAsync(key));
     }
     return true;
 }
 
 async function hashTest() {
-
-    let key = 'HH_TEST';
-    await redis.delAsync(key);
+    let key = 'TEST_HASH';
+    console.log('del %s =', key, await redis.delAsync(key));
     let content = {a: 1, 'b': '2', "c": "3", d: true};
     content[520] = 1314;
     content[1314] = 520;
 
     console.log(content);
 
-    await redis.hmsetAsync(key, content);
-
-    console.log('hmsetAsync-->success');
+    console.log('hmsetAsync =', await redis.hmsetAsync(key, content));
 
     let obj = await redis.hgetAsync(key, "520");
 
-    console.log('hgetAsync-->HH_TEST:520:%s', obj);
+    console.log('hget HH_TEST 520\n', obj);
 
     let objs = await await redis.hgetallAsync(key);
-    console.log('hgetallAsync-->');
+    console.log('hgetall %s\n', key);
     console.dir(objs);
-    let result = await await redis.hgetallAsync('randomKey');
-    console.log('randomKey=', result);
+    console.log('hgetall randomKey\n', await redis.hgetallAsync('randomKey'));
     return true;
 }
 
 async function listTest() {
-    let key = 'listKey';
-    await redis.delAsync(key);
+    let key = 'TEST_LIST';
+    console.log('del %s =', key, await redis.delAsync(key));
     for (let i = 1; i <= 10; i++) {
         await redis.lpushAsync(key, 'listValue' + i);
     }
@@ -47,8 +45,8 @@ async function listTest() {
 }
 
 async function setTest() {
-    let key = 'setKey';
-    await redis.delAsync(key);
+    let key = 'TEST_SET';
+    console.log('del %s =', key, await redis.delAsync(key));
     let arr = [];
     for (let i = 1; i <= 5; i++) {
         arr.push('setValue' + i);
@@ -63,8 +61,8 @@ async function setTest() {
 }
 
 async function zsetTest() {
-    let key = 'zsetKey';
-    await redis.delAsync(key);
+    let key = 'TEST_ZSET';
+    console.log('del %s =', key, await redis.delAsync(key));
     let now = Date.now();
     for (let i = 1; i <= 16; i++) {
         // key score value
