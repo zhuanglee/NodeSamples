@@ -64,15 +64,22 @@ async function zsetTest() {
     let key = 'TEST_ZSET';
     console.log('del %s =', key, await redis.delAsync(key));
     let now = Date.now();
-    for (let i = 1; i <= 16; i++) {
+    for (let i = 16; i >= 1; i--) {
         // key score value
-        await redis.zaddAsync(key, now + i * 1000, 'val' + i);
+        await redis.zaddAsync(key, now - i * 1000, 'val' + i);
     }
     // 删除13秒之前的数据
-    await redis.zremrangebyscoreAsync(key, '-inf', now + 17000);
+    await redis.zremrangebyscoreAsync(key, '-inf', now - 13000);
     // 获取第一个，此时为第14秒存入的数据
     let first = await redis.zrangeAsync(key, 0, 0, 'WithScores');
     console.log(first, Array.isArray(first), first.length);// first = [value, score]
+    // 获取总个数 和 某时间段的数据个数
+    let size = await redis.zcardAsync(key);
+    let count = await redis.zcountAsync(key, now - 5000, now);
+    console.log('size=', size, 'count', count);
+    // 获取某时间段的数据
+    let result = await redis.zrangebyscoreAsync(key, now - 6000, now - 4000, 'WithScores');
+    console.log(result, Array.isArray(result), result.length);
 }
 
 async function test() {
