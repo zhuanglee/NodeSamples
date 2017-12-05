@@ -18,6 +18,21 @@ let argv = require('yargs')
         describe: 'your address',
         type: 'string'
     })
+    .command("morning", "good morning", function (yargs) {
+        let argv = yargs.reset()
+            .option("m", {
+                alias: "message",
+                default: 'Are you hungry?',
+                description: "provide any sentence"
+            })
+            .help("h")
+            .alias("h", "help")
+            .argv;
+        console.log("Good Morning", argv.m);
+    })
+    .command("evening", "good evening", function (yargs) {
+        console.log("Good Evening");
+    })
     .argv;
 console.log('hello %s, welcome to %s', argv.name, argv.address);
 // console.log('other(argv._) =', argv._);
