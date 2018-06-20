@@ -1,8 +1,8 @@
 "use strict";
 //get config info by config library
 const config = require('config');
-const httpServer = require('./src/http_server');
-const route = require('./src/router').route;
+const httpServer = require('./src/app/http_server');
+const route = require('./src/app/router').route;
 // 打印环境变量
 console.log("\nprocess.env.NODE_ENV = %s", process.env.NODE_ENV);
 console.log("process.env.CONFIG_FILE = %s", process.env.CONFIG_FILE);

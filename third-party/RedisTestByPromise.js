@@ -25,8 +25,13 @@ async function hashTest() {
     console.log('hmsetAsync =', await redis.hmsetAsync(key, content));
 
     let obj = await redis.hgetAsync(key, "520");
-
     console.log('hget HH_TEST 520\n', obj);
+
+    await redis.hdelAsync(key, '520');
+    console.log('hdelAsync HH_TEST 520');
+
+    let arr = await redis.hmgetAsync(key, ['520', '1314']);
+    console.log('hmget HH_TEST 520,1314\n', arr);
 
     let objs = await await redis.hgetallAsync(key);
     console.log('hgetall %s\n', key);
