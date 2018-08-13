@@ -90,4 +90,8 @@ async function test2() {
         .catch(err => console.error(err));
 }
 
-test2();
+test2().then(function () {
+    console.log("Test completed.");
+}).catch(function (err) {
+    console.log(err);
+});

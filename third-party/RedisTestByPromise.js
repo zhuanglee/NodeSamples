@@ -96,4 +96,8 @@ async function test() {
     await redis.quit();
 }
 
-test();
+test().then(function () {
+    console.log("Test completed.");
+}).catch(function (err) {
+    console.log(err);
+});
