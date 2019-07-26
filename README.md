@@ -1,2 +1,2 @@
-# NodeTest
-This is a node test project.
+# NodeSamples
+This is node samples project.
